@@ -74,16 +74,3 @@ if (yourScore>computerScore){
 //Printing A Winner 
 console.log(reportWinner());
 
-
-    let currentBottles=99;
-    while (currentBottles>=0){
-        if (currentBottles===1){
-        console.log("1 bottle of beer on the wall, 1 bottle of beer.Take one down and pass it around, no more bottles of beer on the wall.");
-        }else if(currentBottles===0){
-        console.log("No more bottles of beer on the wall, no more bottles of beer.Go to the store and buy some more, 99 bottles of beer on the wall.");
-        }else{
-        console.log(currentBottles+" bottles of beer on the wall,"+currentBottles+ " bottles of beer.Take one down and pass it around,"+ --currentBottles +"bottles of beer on the wall.");
-    }
-    }
-    }
-  
