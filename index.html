@@ -2,9 +2,44 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors</title>
-
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap" rel="stylesheet">
+        
     </head>
     <body>
-        <script src="script.js"></script>
+        <div class="page-container">
+            <div class="heading">
+                <h1>Choose Rock, Paper, Scissors </h1>   
+                <h3>First to get 5 points wins</h3>  
+                <p class="report-winner"></p>
+            </div>  
+                
+            <div class="content">
+                <div class="handplay-buttons">
+                    <button class="handplay rock">Rock</button>
+                    <button class="handplay paper">Paper</button>
+                    <button class="handplay scissors">Scissors</button>
+                </div>
+                <div class="score-heading"></div>
+                <div class="plays">
+                    <p class="you-play"></p>
+                    <p class="final-score"></p>
+                    <p class="computer-play"></p>   
+                </div>
+                <div class="display">
+                    <div>
+                        <img class="handplay-img your-display" src="images/placeholder.png" alt="placeholder">
+                    </div>
+                    <div>
+                        <img id="operator" src="images/placeholder.png" alt="placeholder">
+                        <p class="result"></p>
+                    </div>
+                    <div>
+                       <img class = "handplay-img computer-display" src="images/placeholder.png" alt="placeholder">
+                    </div>
+                </div>
     </body>
 </html>
