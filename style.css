@@ -1,0 +1,80 @@
+body{
+    background: #36594E;
+    text-align: center;
+    padding: 50px;
+    font-family: 'Poppins', sans-serif;
+    color:white;
+    font-size: 17px;
+}   
+.heading{
+    font-weight: 400px;
+}
+.page-container{
+    margin: 0 150px;
+}
+
+.report-winner{
+    width: 50%;
+    margin: auto;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Buttons */
+.handplay-buttons{
+    display:flex;
+    justify-content: space-evenly;
+    gap: 45px;
+    padding: 30px 0;
+}
+
+.handplay{
+    padding: 20px 35px;
+    margin: 0px 25px;
+    border-style: none;
+    background-color: #84D8BC;
+    border-radius: 8px;
+    color: #36594E;
+    font-weight: 400px;
+    font-size: 16px;
+}
+
+.handplay:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#operator{
+    width:144px;
+    height:144px;
+}
+
+
+.plays{
+    display: flex;
+    justify-content: space-around;
+    font-weight: 200px;
+}
+
+.score-heading{
+    margin-right: 25px;
+    text-decoration: underline;
+}
+.final-score{
+    margin-left: 35px;
+}
+
+.display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.handplay-img{
+    height: 50%;
+    width: 50%;
+    background-color: #36594E;
+    border-radius: 15px;
+}
+
