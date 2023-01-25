@@ -9,17 +9,15 @@ body{
 .heading{
     font-weight: 400px;
 }
-.page-container{
-    margin: 0 150px;
-}
 
 .report-winner{
     width: 50%;
     margin: auto;
 }
-.content{
+
+.game-container{
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
 }
 
 /* Buttons */
@@ -71,10 +69,10 @@ body{
     align-items: center;
 }
 
-.handplay-img{
+.player-img, 
+.computer-img{
     height: 50%;
-    width: 50%;
-    background-color: #36594E;
+    width: auto; 
     border-radius: 15px;
 }
 

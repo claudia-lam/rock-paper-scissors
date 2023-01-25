@@ -1,13 +1,24 @@
+const handGestures = ['rock', 'paper', 'scissors']; 
+
 //Computer Selection 
 function getComputerSelection() {
-    return Math.floor(Math.random() * 3); 
+    const randomNum = Math.floor(Math.random() * 3); 
+    const computerChoice = handGestures[randomNum]; 
+    displayImages(computerChoice, 'computer'); 
+    return randomNum; 
 }
 
 //Player Selection 
-function getPlayerSelection(whichButton) {
-    const handGestures = ['rock', 'paper', 'scissors']; 
-    const playerChoice = whichButton.target.name; 
+function getPlayerSelection(event) {
+    const playerChoice = event.target.name; 
+    displayImages(playerChoice, 'player'); 
     return handGestures.indexOf(playerChoice); 
+}
+
+
+function displayImages(move, owner) {
+    const playerImages = document.querySelector(`.${owner}-img`); 
+    playerImages.src = `images/${move}.png`
 }
 
 
@@ -102,9 +113,10 @@ const moveButtons = document.querySelectorAll('.move');
 Array.from(moveButtons).forEach(button => {
   button.addEventListener('click', function(e) {
     playGame(playRound, e); 
-    
   }); 
 })
+
+
 
 // //Function to Report a Winner 
 // function reportWinner(playerScore, computerScore){
