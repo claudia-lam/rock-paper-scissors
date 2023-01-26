@@ -5,12 +5,13 @@ function getComputerSelection() {
     const randomNum = Math.floor(Math.random() * 3); 
     const computerChoice = handGestures[randomNum]; 
     displayImages(computerChoice, 'computer'); 
+    console.log(computerChoice); 
     return randomNum; 
 }
 
 //Player Selection 
 function getPlayerSelection(event) {
-    const playerChoice = event.target.name; 
+    const playerChoice = event.target.alt; 
     displayImages(playerChoice, 'player'); 
     return handGestures.indexOf(playerChoice); 
 }
@@ -21,66 +22,50 @@ function displayImages(move, owner) {
     playerImages.src = `images/${move}.png`
 }
 
-
-// //Add event listeners to all buttons 
-// const buttons = document.querySelectorAll("button");            
-// buttons.forEach(function(button){                             
-//     button.addEventListener('click', function(e){ 
-//         //Set object declaration for player 
-//         let playerSelection = this.textContent.toLowerCase();
-//         document.querySelector(".your-display").src = 'images/'+playerSelection+'.png';
-//         document.querySelector(".you-play").textContent = 'You Play:';
-//         //Set object declaration for computer
-//         let computerSelection = computerPlay();
-//         document.querySelector(".computer-display").src = 'images/'+computerSelection+'.png';
-//         document.querySelector(".computer-play").textContent = 'Computer Plays:';
-//         //Play 1 round and return the result 
-//         let result = playRound(playerSelection,computerSelection);
-//         document.querySelector(".result").textContent = (result);
-//         //Add Operator Images 
-//         if (result.includes("You Win")){
-//             document.getElementById("operator").src = 'images/youwin.png';
-//         } else if (result.includes("You Lose")){
-//             document.getElementById("operator").src = 'images/youlose.png';
-//         } else {
-//             document.getElementById("operator").src = 'images/draw.png';
-//         }
-//         //Set object declaration to keep score 
-//         document.querySelector(".score-heading").textContent = 'Score';
-//         document.querySelector(".final-score").textContent = yourScore+' to '+computerScore;
-//     });
-// });
-
 // Create Score System 
 let playerScore = 0;
 let computerScore = 0;
 
+//Display Score 
+function displayScore() {
+    //create div to display score 
+    const scores = document.querySelector('.display-score'); 
+    scores.innerText = `${playerScore} - ${computerScore}`; 
+    //add inner text to display score 
+}
+
+function displayOperator() {
+    const img = document.createElement('.img'); 
+    img.src = 
+}
+
 //Play 1 round of rock, paper, scissors 
 function playRound(computer, player) {
+    const displayResult = document.querySelector('.display-result'); 
     if (computer === 0 && player === 2) { //rock beats scissors 
       computerScore++; 
-      return 'you lose, try again'
+      displayResult.innerText = 'you lose, try again'; 
     } else if (player === 0 && computer === 2) {
       playerScore++; 
-      return 'you win!'; 
+      displayResult.innerText = 'you win!'; 
     } else if (computer === player) {
-      return 'Its a tie'; 
+      displayResult.innerText = 'Its a tie'; 
     } else if (computer > player) {
       computerScore++; 
-      return 'you lose, try again!'; 
+      displayResult.innerText = 'you lose, try again!'; 
     } else {
       playerScore++; 
-      return 'you win!'; 
+      displayResult.innerText = 'you win!'; 
     }
   }
+
 
 //Play multiple rounds 
 function playGame(gameFunc, event) {
     const computerSelection = getComputerSelection(); 
     const playerSelection = getPlayerSelection(event); 
-    console.log('comp:'+computerSelection, 'player:'+ playerSelection); 
-    gameFunc(computerSelection, playerSelection);
-    console.log('scores:' + computerScore, playerScore); 
+    gameFunc(computerSelection, playerSelection); 
+    displayScore(); 
     checkWinner(playerScore, computerScore);
 }
   
@@ -109,10 +94,11 @@ function resetGame() {
     computerScore = 0; 
 }
 
-const moveButtons = document.querySelectorAll('.move'); 
+const moveButtons = document.querySelectorAll('.move-button'); 
 Array.from(moveButtons).forEach(button => {
   button.addEventListener('click', function(e) {
     playGame(playRound, e); 
+    console.log(e); 
   }); 
 })
 
@@ -121,11 +107,11 @@ Array.from(moveButtons).forEach(button => {
 // //Function to Report a Winner 
 // function reportWinner(playerScore, computerScore){
 //     if (playerScore === computerScore){
-//          document.querySelector(".report-winner").textContent = ("Yay! You beat the computer! Click below to play again!");
+//          document.querySelector(".report-winner").innerText = ("Yay! You beat the computer! Click below to play again!");
 //     } else if (computerScore > playerScore){
-//         document.querySelector(".report-winner").textContent = ("You lose! Computer is the Champion. Click below to play again!");
+//         document.querySelector(".report-winner").innerText = ("You lose! Computer is the Champion. Click below to play again!");
 //     }else{
-//         document.querySelector(".report-winner").textContent = "hi!";
+//         document.querySelector(".report-winner").innerText = "hi!";
 //     }
 // };
 
