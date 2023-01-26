@@ -16,7 +16,6 @@ function getPlayerSelection(event) {
     return handGestures.indexOf(playerChoice); 
 }
 
-
 function displayImages(move, owner) {
     const playerImages = document.querySelector(`.${owner}-img`); 
     playerImages.src = `images/${move}.png`
@@ -34,28 +33,29 @@ function displayScore() {
     //add inner text to display score 
 }
 
-function displayOperator() {
-    const img = document.createElement('.img'); 
-    img.src = 
-}
-
 //Play 1 round of rock, paper, scissors 
 function playRound(computer, player) {
     const displayResult = document.querySelector('.display-result'); 
+    const displayOperator = document.querySelector('.display-operator'); 
     if (computer === 0 && player === 2) { //rock beats scissors 
       computerScore++; 
       displayResult.innerText = 'you lose, try again'; 
+      displayOperator.src = `images/youlose.png`; 
     } else if (player === 0 && computer === 2) {
       playerScore++; 
       displayResult.innerText = 'you win!'; 
+      displayOperator.src = `images/youwin.png`; 
     } else if (computer === player) {
       displayResult.innerText = 'Its a tie'; 
+      displayOperator.src = `images/draw.png`; 
     } else if (computer > player) {
       computerScore++; 
       displayResult.innerText = 'you lose, try again!'; 
+      displayOperator.src = `images/youlose.png`; 
     } else {
       playerScore++; 
       displayResult.innerText = 'you win!'; 
+      displayOperator.src = `images/youwin.png`; 
     }
   }
 
@@ -73,45 +73,39 @@ function playGame(gameFunc, event) {
 function checkWinner(playerScore, computerScore) {
     if (playerScore === 5 || computerScore === 5) {
       declareWinner(playerScore, computerScore); 
-      resetGame(); 
     }
   }
 
+//Modal 
+const modal = document.querySelector('.modal-container'); 
+const restartBtn = document.querySelector('#restart-btn'); 
+const finalResults = document.querySelector('#final-result'); 
 
 //Declare winner 
 function declareWinner(playerScore, computerScore) {
+    modal.showModal(); 
     if (playerScore === computerScore) {
-      console.log('Its a tie! Both winners') ; 
+      finalResults.innerText = 'Its a tie! Both winners'; 
     } else if (playerScore > computerScore) {
-      console.log('You won the game!') ; 
+      finalResults.innerText = 'You won the game!'; 
     } else {
-      console.log('You lost the game!');
+      finalResults.innerText = 'You lost the game!';
     }
-  }
-
-function resetGame() {
-    playerScore = 0; 
-    computerScore = 0; 
 }
+
+//Restart the Game 
+restartBtn.addEventListener('click', e => {
+    location.reload();  
+    modal.close(); 
+}); 
+
 
 const moveButtons = document.querySelectorAll('.move-button'); 
 Array.from(moveButtons).forEach(button => {
   button.addEventListener('click', function(e) {
+    if (!moveButtons) return; 
     playGame(playRound, e); 
-    console.log(e); 
   }); 
 })
 
-
-
-// //Function to Report a Winner 
-// function reportWinner(playerScore, computerScore){
-//     if (playerScore === computerScore){
-//          document.querySelector(".report-winner").innerText = ("Yay! You beat the computer! Click below to play again!");
-//     } else if (computerScore > playerScore){
-//         document.querySelector(".report-winner").innerText = ("You lose! Computer is the Champion. Click below to play again!");
-//     }else{
-//         document.querySelector(".report-winner").innerText = "hi!";
-//     }
-// };
 
